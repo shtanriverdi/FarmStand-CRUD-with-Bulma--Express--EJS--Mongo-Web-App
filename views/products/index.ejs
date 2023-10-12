@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') -%>
+<body>
+    <h1><%= category %> Products</h1>
+    <ul>
+        <% for (let product of products) { %>
+            <li><a href="/products/<%= product._id %>"><%= product.name %>  </a><a href="/products/<%= product._id %>/edit"><button>Edit Product</button></a></li>
+        <% } %>
+    </ul>
+    <a href="/products/new">Create New Product</a>
+    <% if (category !== undefined) { %>
+        <a href="/products">All Products</a>
+    <% } %>
+</body>
+</html>
