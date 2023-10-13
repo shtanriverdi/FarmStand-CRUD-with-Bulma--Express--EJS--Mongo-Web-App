@@ -1,16 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/header') -%>
-<body>
-    <h1><%= category %> Products</h1>
-    <ul>
-        <% for (let product of products) { %>
-            <li><a href="/products/<%= product._id %>"><%= product.name %>  </a><a href="/products/<%= product._id %>/edit"><button>Edit Product</button></a></li>
-        <% } %>
-    </ul>
-    <a href="/products/new">Create New Product</a>
-    <% if (category !== undefined) { %>
-        <a href="/products">All Products</a>
-    <% } %>
-</body>
+
+    <body>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered has-text-centered">
+                    <div class="tile is-vertical is-8">
+                        <div class="tile is-parent">
+                            <article class="tile is-child notification is-warning">
+                                <p class="title">
+                                    <%= category %> Products
+                                </p>
+                                <p class="subtitle">Welcome to the Farm Stand!</p>
+                                <p class="subtitle is-italic">Fresh, Affordable Produce, Delivered to Your Door!</p>
+                                <p class="subtitle">🍇🍉🍊🍋🍌🍍🍎🍏🍐🍑🍒🍓🥥🥑🍆🥔🥕</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="has-text-centered">
+                    <p class="title"><%= category %> Products</p>
+                    <ul>
+                        <% for (let product of products) { %>
+                            <li>
+                                <div class="columns">
+                                    <div class="column is-narrow">
+                                        <a href="/products/<%= product._id %>">
+                                            <%= product.name %>
+                                        </a>
+                                    </div>
+                                    <div class="column is-narrow">
+                                        <a href="/products/<%= product._id %>/edit"><button
+                                                class="button is-focused is-medium is-rounded is-info is-light"><%- include('../partials/edit_icon')
+                                                    -%></button></a>
+                                    </div>
+                                    <div class="column is-narrow">
+                                        <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                                            <button class="button is-focused is-medium is-rounded is-danger is-light"><%-
+                                                    include('../partials/delete_icon') -%></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <a href="/products/new">Create New Product<button
+                                class="button is-focused is-medium is-rounded is-success  is-light"><%- include('../partials/new_icon') -%></button></a>
+
+                    <% if (category !==undefined) { %>
+                        <a href="/products">All Products</a>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="has-text-centered is-size-7">
+                <p>
+                    <strong>Farm Stand</strong> created by <a href="https://shtanriverdi.github.io/">Süha
+                        Tanrıverdi.</a>
+                <p>All Rights Reserved. Genesis Corporation™ 2023.</p>
+                </p>
+            </div>
+        </footer>
+        <script src="/reload/reload.js"></script>
+    </body>
 </html>

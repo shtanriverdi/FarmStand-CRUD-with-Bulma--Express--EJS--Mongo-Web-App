@@ -7,6 +7,9 @@ const Product = require('./models/product');
 const methodOverride = require('method-override');
 const favicon = require('serve-favicon');
 
+// For browser to refresh automatically
+const reload = require('reload');
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // To serve static files such as images, CSS files, and JavaScript files, 
@@ -23,6 +26,9 @@ main().catch(err => console.log("Mongo Error happened:", err));
 app.listen(port, () => {
     console.log('Express App is listening on port: ', port, '...');
 });
+
+// For browser to refresh automatically
+reload(app);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
