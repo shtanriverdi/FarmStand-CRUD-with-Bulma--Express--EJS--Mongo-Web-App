@@ -74,7 +74,6 @@ app.delete('/products/:id', async (req, res) => {
 });
 
 app.put('/products/:id', async (req, res) => {
-    console.log(req.body, req.params);
     const { id } = req.params;
     const editedProduct = req.body;
     const updatedProduct = await Product.findByIdAndUpdate(id, editedProduct, { runValidators: true, new: true });
