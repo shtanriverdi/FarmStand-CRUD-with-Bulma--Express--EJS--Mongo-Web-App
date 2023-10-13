@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/header') -%>
-<body>
-    <h1>Edit Product</h1>
-    <form action="/products/<%= product._id %>?_method=PUT" method="POST">
-        <label for="name">Product Name:</label>
-        <input id="name" type="text" name="name" placeholder="Product Name" value="<%= product.name %>"><br>
-        
-        <hr style="color: transparent;">
-        <label for="price">Price (Unit):</label>
-        <input id="price" step=".01" type="number" name="price" placeholder="Price" value="<%= product.price %>"><br>
-        
-        <hr style="color: transparent;">
-        <label for="category">Category:</label>
-        
-        <select name="category" id="category">
 
-            <% for (let category of categories) { %>
-                <option value="<%= category %>" <%= product.category === category ? 'selected' : '' %>><%= category %></option>
-            <% } %>
+    <body>
 
-        </select>
-        <button>Submit</button>
-    </form>
-    <hr style="color: transparent;">
-    <a href="/products">Go Back To Main Page</a>
-</body>
+        <section class="section">
+            <div class="container is-centered has-text-centered">
+                <div class="columns">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-warning">
+                            <p class="title">Edit the Product</p>
+                            <p class="subtitle is-italic">Update your desired product!</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <div class="columns is-centered has-text-centered">
+                <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+                    <label class="label" for="name">Product Name:</label>
+                    <input class="input mb-3" required id="name" type="text" name="name" placeholder="Product Name"
+                        value="<%= product.name %>"><br>
+
+                    <label class="label" for="price">Price (Unit):</label>
+                    <input class="input mb-3" required id="price" step=".01" type="number" name="price" placeholder="Price"
+                        value="<%= product.price %>"><br>
+
+                    <label class="label" for="category">Category:</label>
+                    <div class="control">
+                        <div class="select" name="category" id="category">
+                            <select>
+                                <% for (let category of categories) { %>
+                                    <option value="<%= category %>" <%=product.category===category ? 'selected' : '' %>>
+                                        <%= category %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr style="color: transparent;">
+                    <button class="button is-warning">Submit</button>
+                </form>
+            </div>
+
+        <hr style="color: transparent;">
+        <section class="section">
+            <div class="columns is-centered has-text-centered">
+                <hr style="color: transparent;">
+                <a href="/products">
+                    <button class="button is-focused is-medium is-rounded is-success is-light">
+                        Go Back to All Products
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <script src="/reload/reload.js"></script>
+    </body>
+
 </html>

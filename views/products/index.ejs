@@ -6,7 +6,7 @@
         <section class="section">
             <div class="container">
                 <div class="columns is-centered has-text-centered">
-                    <div class="tile is-parent is-8">
+                    <div class="tile is-parent">
                         <article class="tile is-child notification is-warning">
                             <p class="title">Welcome to the Farm Stand!</p>
                             <p class="subtitle is-italic">Fresh, Affordable Produce, Delivered to Your Door!</p>
@@ -17,48 +17,117 @@
             </div>
         </section>
 
-        <section class="section">
+        <!-- <section class="section">
             <div class="container">
-                <div class="is-centered has-text-centered">
-                    <p class="title">
-                        <%= category %> Products
-                    </p>
-                    <a href="/products/new">Create New Product<button
-                            class="button is-focused is-medium is-rounded is-success  is-light"><%-
-                                include('../partials/new_icon') -%></button></a>
-                    <% for (let product of products) { %>
-                        <div class="columns">
-                            <div class="column mx-2 is-half is-warning notification">
-                                <a href="/products/<%= product._id %>">
-                                    <%= product.name %>
-                                </a>
-                            </div>
-                            <div class="column mx-2 is-info notification"><a
-                                    href="/products/<%= product._id %>/edit"><button
-                                        class="button is-focused is-medium is-rounded is-info is-light"><%-
-                                            include('../partials/edit_icon') -%></button></a></div>
-                            <div class="column mx-2 is-danger notification">
-                                <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
-                                    <button class="button is-focused is-medium is-rounded is-danger is-light"><%-
-                                            include('../partials/delete_icon') -%></button>
-                                </form>
-                            </div>
+                <div class="columns is-centered">
+
+                    <div class="column is-narrow">
+                        <div class="box" style="width: 400px;">
+                            <p class="title is-5">
+                                <%= category %> Products
+                            </p>
+                            <p class="subtitle">This column is only 200px wide.</p>
                         </div>
-                        <% } %>
+                    </div>
+
+                    <div class="column is-narrow">
+                        <div class="box" style="width: 400px;">
+                            <a href="/products/new">
+                                <button class="button is-focused is-medium is-rounded is-success  is-light">
+                                    Create New Product &nbsp;
+                                    <%- include('../partials/new_icon') -%>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="box">
+                            <p class="title is-5">Flexible column</p>
+                            <p class="subtitle">This column will take up the remaining space available.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <footer class="footer">
-            <div class="has-text-centered is-size-7">
-                <p>
-                    <strong>Farm Stand</strong> created by <a href="https://shtanriverdi.github.io/">Süha
-                        Tanrıverdi.</a>
-                <p>All Rights Reserved. Genesis Corporation™ 2023.</p>
+        <!-- <div class="columns is-centered is-6">
+            <div class="column is-half">
+                <p class="title has-text-right">
+                    <%= category %> Products
                 </p>
             </div>
-        </footer>
-        <script src="/reload/reload.js"></script>
+            <div class="column has-text-left">
+                <a href="/products/new">
+                    <button class="button is-focused is-medium is-rounded is-success  is-light">
+                        Create New Product &nbsp;
+                        <%- include('../partials/new_icon') -%>
+                    </button>
+                </a>
+            </div>
+        </div> -->
+
+        <div class="columns is-centered is-2">
+            <div class="column">
+                <p class="title is-size-2 has-text-right">
+                    <%= category %> Products
+                </p>
+            </div>
+            <div class="column">
+                <a href="/products/new">
+                    <button class="button is-focused is-medium is-rounded is-success  is-light">
+                        Create New Product &nbsp;
+                        <%- include('../partials/new_icon') -%>
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <% for (let product of products) { %>
+            <div class="columns is-centered">
+                <div class="column is-half is-8">
+                    <header class="card-header">
+                        <a href="/products/<%= product._id %>">
+                            <p class="card-header-title has-text-dark">
+                                <%= product.name %>
+                            </p>
+                        </a>
+                        <p class="card-header-title has-text-success">
+                            Price: <%= product.price %>$
+                        </p>
+                        <a href="/products/<%= product._id %>">
+                            <button class="button is-focused is-rounded is-primary is-light"><%-
+                                    include('../partials/show_icon') -%>
+                            </button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a href="/products/<%= product._id %>/edit">
+                            <button class="button is-focused is-rounded is-info is-light"><%-
+                                    include('../partials/edit_icon') -%>
+                            </button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                            <button class="button is-focused is-rounded is-danger is-light"><%-
+                                    include('../partials/delete_icon') -%></button>
+                        </form>
+                        &nbsp;&nbsp;
+                    </header>
+                </div>
+            </div>
+            <% } %>
+
+                <footer class="footer">
+                    <div class="has-text-centered is-size-7">
+                        <p>
+                            <strong>Farm Stand</strong> created by <a href="https://shtanriverdi.github.io/">Süha
+                                Tanrıverdi.</a>
+                        <p class="is-italic">All Rights Reserved. Genesis Corporation™ 2023.</p>
+                        </p>
+                    </div>
+                </footer>
+                <script src="/reload/reload.js"></script>
     </body>
 
 </html>

@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/header') -%>
-<body>
-    <h1>Add A Product</h1>
-    <form action="/products" method="POST">
-        <label for="name">Product Name:</label>
-        <input id="name" type="text" name="name" placeholder="Product Name"><br>
-        
-        <hr style="color: transparent;">
-        <label for="price">Price (Unit):</label>
-        <input id="price" type="number" name="price" placeholder="Price"><br>
-        
-        <hr style="color: transparent;">
-        <label for="category">Category:</label>
-        <select name="category" id="category">
+<%- include('../partials/header') -%>
 
-            <% for (let category of categories) { %>
-                <option value="<%= category %>"><%= category %></option>
-            <% } %>
+    <body>
+        <section class="section">
+            <div class="container is-centered has-text-centered">
+                <div class="columns">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-success">
+                            <p class="title">🍒 Add a New Product 🍑</p>
+                            <p class="subtitle is-italic">Add your new fresh and organic product to our database!</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        </select>
-        <button>Submit</button>
-    </form>
-    <hr style="color: transparent;">
-    <a href="/products">Go Back To Main Page</a>
-</body>
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-6">
+                <p class="title is-size-2">Add A Product</p>
+                <form action="/products" method="POST">
+                    <div class="field">
+                        <label class="label" for="name">Product Name:</label>
+                        <input required class="input" id="name" type="text" name="name" placeholder="Product Name"><br>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="price">Price (Unit):</label>
+                        <input required step=".01" class="input" id="price" type="number" name="price" placeholder="Price"><br>
+                    </div>
+
+                    <label class="label" for="category">Category:</label>
+                    <div class="control">
+                        <div class="select" name="category" id="category">
+                            <select>
+                                <% for (let category of categories) { %>
+                                    <option value="<%= category %>">
+                                        <%= category %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    <hr style="color: transparent;">
+                    <button class="button is-success">Save</button>
+                </form>
+                <hr style="color: transparent;">
+                <a href="/products">
+                    <button class="button is-focused is-medium is-rounded is-success is-light">
+                        Go Back To Main Page
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <script src="/reload/reload.js"></script>
+    </body>
+
 </html>
