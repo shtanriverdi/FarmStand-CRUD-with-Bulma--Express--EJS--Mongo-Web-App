@@ -20,4 +20,4 @@ This is a basic create, read, update, delete (CRUD) operations example in pure H
 #### Main Page Screenshot
 ![Farm Stand CRUD Projects](https://github.com/shtanriverdi/FarmStand-CRUD-with-Bulma-Express-EJS-Mongo-Web-App/assets/36234545/00e67377-b095-44ca-817d-75f3e0bd4b5c)
 
-![farm-ezgif com-resize](https://github.com/user-attachments/assets/8b451dce-06b8-4554-9bad-353a525e6dd9)
+![farm-ezgif com-resize (1)](https://github.com/user-attachments/assets/f298a617-9112-43f7-ac49-c5080fc6dd60)
